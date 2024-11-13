@@ -1,7 +1,7 @@
 const config = {
-    trailingComma: "es5",
+    trailingComma: 'es5',
     tabWidth: 4,
     singleQuote: true,
-  };
-  
-  export default config;
+};
+
+export default config;
