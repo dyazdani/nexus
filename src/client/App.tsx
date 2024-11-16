@@ -1,5 +1,6 @@
+import { MyMap } from './components/MyMap';
 function App() {
-    return <h1></h1>;
+    return <MyMap />;
 }
 
 export default App;
