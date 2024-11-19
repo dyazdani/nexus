@@ -1,7 +1,7 @@
-import Nexus from './components/Nexus';
+import NexusForm from './components/NexusForm';
 
 function App() {
-    return <Nexus />;
+    return <NexusForm />;
 }
 
 export default App;
