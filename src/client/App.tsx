@@ -1,5 +1,7 @@
+import Nexus from './components/Nexus';
+
 function App() {
-    return <h1></h1>;
+    return <Nexus />;
 }
 
 export default App;
