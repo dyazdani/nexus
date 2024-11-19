@@ -1,5 +1,7 @@
+import NexusForm from './components/NexusForm';
+
 function App() {
-    return <h1></h1>;
+    return <NexusForm />;
 }
 
 export default App;
