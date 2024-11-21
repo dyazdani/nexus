@@ -12,6 +12,7 @@ const Nexus = () => {
     ]);
 
     const handleSubmit = async () => {
+        // Convert strings from number input tags to numbers for turf.js points function
         const coordinatesAsPositions: Position[] = coordinates.map((el) => [
             parseFloat(el[0]),
             parseFloat(el[1]),
