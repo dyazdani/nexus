@@ -1,10 +1,18 @@
+import { Position } from 'geojson';
+import { LatLngTuple } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
-const NexusMap = () => {
+interface NexusMapProps {
+    nexusPosition: Position;
+}
+
+const NexusMap = ({ nexusPosition }: NexusMapProps) => {
+    // Create new array with Position returned by turf.js with type that Leaflet.js accepts
+    const nexusLatLngTuple: LatLngTuple = [nexusPosition[0], nexusPosition[1]];
+
     return (
         <MapContainer
-            // TODO: Change this test center to be the result from NexusForm
-            center={[51.505, -0.09]}
+            center={nexusLatLngTuple}
             zoom={13}
             scrollWheelZoom={false}
             style={{
@@ -16,8 +24,7 @@ const NexusMap = () => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {/* TODO: Change this test position to be the result from NexusForm */}
-            <Marker position={[51.505, -0.09]}>
+            <Marker position={nexusLatLngTuple}>
                 <Popup>
                     This is a sample popup. <br /> Easily customizable.
                 </Popup>
