@@ -1,5 +1,7 @@
+import NexusForm from './components/NexusForm';
+
 function App() {
-    return <div id="map"></div>;
+    return <NexusForm />;
 }
 
 export default App;
