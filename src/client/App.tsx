@@ -1,13 +1,7 @@
-import NexusForm from './components/NexusForm';
-import NexusMap from './components/NexusMap';
+import NexusPage from './components/NexusPage';
 
 function App() {
-    return (
-        <>
-            <NexusForm />
-            <NexusMap />
-        </>
-    );
+    return <NexusPage />;
 }
 
 export default App;
