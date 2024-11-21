@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const Nexus = () => {
     const [nexusAddress, setNexusAddress] = useState<null | string>(null);
-    // TODO: Change from 0s to empty strings for better user experience inputting negative numbers from initial state
     const [coordinates, setCoordinates] = useState<string[][]>([
         ['', ''],
         ['', ''],
