@@ -18,8 +18,10 @@ const Nexus = () => {
             parseFloat(el[1]),
         ]);
 
+        // Find center point between three coordinates
         const nexus = center(points(coordinatesAsPositions));
 
+        // Call OpenCage API to reverse geocode the nexus of coordinates to get address string
         try {
             const response = await opencage.geocode({
                 key: import.meta.env.VITE_OPENCAGE_API_KEY,
