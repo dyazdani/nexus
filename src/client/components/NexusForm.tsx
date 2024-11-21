@@ -5,15 +5,23 @@ import { useState } from 'react';
 
 const Nexus = () => {
     const [nexusAddress, setNexusAddress] = useState<null | string>(null);
-    // TODO: Change from 0s to empty strings for better user experience inputting negative numbers from initial state
-    const [coordinates, setCoordinates] = useState<Position[]>([
-        [0, 0],
-        [0, 0],
-        [0, 0],
+    const [coordinates, setCoordinates] = useState<string[][]>([
+        ['', ''],
+        ['', ''],
+        ['', ''],
     ]);
 
     const handleSubmit = async () => {
-        const nexus = center(points(coordinates));
+        // Convert strings from number input tags to numbers for turf.js points function
+        const coordinatesAsPositions: Position[] = coordinates.map((el) => [
+            parseFloat(el[0]),
+            parseFloat(el[1]),
+        ]);
+
+        // Find center point between three coordinates
+        const nexus = center(points(coordinatesAsPositions));
+
+        // Call OpenCage API to reverse geocode the nexus of coordinates to get address string
         try {
             const response = await opencage.geocode({
                 key: import.meta.env.VITE_OPENCAGE_API_KEY,
@@ -65,8 +73,8 @@ const Nexus = () => {
                         value={coordinates[0][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[0][1] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[0][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
@@ -82,8 +90,8 @@ const Nexus = () => {
                         value={coordinates[0][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[0][0] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[0][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
@@ -102,8 +110,8 @@ const Nexus = () => {
                         value={coordinates[1][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[1][1] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[1][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
@@ -119,8 +127,8 @@ const Nexus = () => {
                         value={coordinates[1][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[1][0] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[1][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
@@ -139,8 +147,8 @@ const Nexus = () => {
                         value={coordinates[2][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[2][1] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[2][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
@@ -156,8 +164,8 @@ const Nexus = () => {
                         value={coordinates[2][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: Position[] = [...coordinates];
-                            newCoordinates[2][0] = +e.target.value;
+                            const newCoordinates: string[][] = [...coordinates];
+                            newCoordinates[2][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
                     />
