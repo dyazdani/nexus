@@ -186,10 +186,10 @@ const NexusPage = () => {
             </form>
 
             {nexus ? (
-                <>
-                    <NexusMap nexusPosition={nexus.position} />
-                    <p>{nexus.address}</p>
-                </>
+                <NexusMap
+                    nexusPosition={nexus.position}
+                    nexusAddress={nexus.address}
+                />
             ) : undefined}
         </div>
     );

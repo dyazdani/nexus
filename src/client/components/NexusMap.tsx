@@ -4,9 +4,10 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 interface NexusMapProps {
     nexusPosition: Position;
+    nexusAddress: string;
 }
 
-const NexusMap = ({ nexusPosition }: NexusMapProps) => {
+const NexusMap = ({ nexusPosition, nexusAddress }: NexusMapProps) => {
     // Create new array with Position returned by turf.js with type that Leaflet.js accepts
     const nexusLatLngTuple: LatLngTuple = [nexusPosition[0], nexusPosition[1]];
 
@@ -25,9 +26,7 @@ const NexusMap = ({ nexusPosition }: NexusMapProps) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={nexusLatLngTuple}>
-                <Popup>
-                    This is a sample popup. <br /> Easily customizable.
-                </Popup>
+                <Popup>{nexusAddress}</Popup>
             </Marker>
         </MapContainer>
     );
