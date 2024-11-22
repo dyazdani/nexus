@@ -14,7 +14,7 @@ const NexusMap = ({
     nexusAddress,
     originPositions,
 }: NexusMapProps) => {
-    // Create new array with Position returned by turf.js with type that Leaflet.js accepts
+    // Create new arrays with [Lat, Lng] order for Leaflet.js
     const nexusLatLngTuple: LatLngTuple = [nexusPosition[1], nexusPosition[0]];
     const originLatLngTuples: LatLngTuple[] = [
         [originPositions[0][1], originPositions[0][0]],
