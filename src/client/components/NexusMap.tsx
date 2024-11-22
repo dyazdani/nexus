@@ -10,7 +10,7 @@ interface NexusMapProps {
 
 const NexusMap = ({ nexusPosition, nexusAddress }: NexusMapProps) => {
     // Create new array with Position returned by turf.js with type that Leaflet.js accepts
-    const nexusLatLngTuple: LatLngTuple = [nexusPosition[0], nexusPosition[1]];
+    const nexusLatLngTuple: LatLngTuple = [nexusPosition[1], nexusPosition[0]];
 
     return (
         <MapContainer
