@@ -10,6 +10,7 @@ interface Nexus {
 }
 
 const NexusPage = () => {
+    // Each coordinate in coordinates state stored as [LAT, LNG] for Turf.js to use.
     const [coordinates, setCoordinates] = useState<string[][]>([
         ['', ''],
         ['', ''],
@@ -28,7 +29,8 @@ const NexusPage = () => {
         const nexusPosition = center(points(coordinatesAsPositions)).geometry
             .coordinates;
 
-        // Call OpenCage API to reverse geocode the nexusPosition of coordinates to get address string
+        // Call OpenCage API to reverse geocode the nexusPosition of coordinates to get address string.
+        // Latitude and longitude switched in string argument to conform with expected formate for OpenCage API
         try {
             const response = await opencage.geocode({
                 key: import.meta.env.VITE_OPENCAGE_API_KEY,
