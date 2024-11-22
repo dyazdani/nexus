@@ -18,7 +18,7 @@ const NexusMap = ({ nexusPosition, nexusAddress }: NexusMapProps) => {
             scrollWheelZoom={false}
             style={{
                 height: '300px',
-                width: '300px',
+                width: '95dvw',
             }}
         >
             <TileLayer
