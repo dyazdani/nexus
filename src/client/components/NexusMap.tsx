@@ -1,6 +1,7 @@
 import { Position } from 'geojson';
 import { LatLngTuple } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import ChangeView from './ChangeView';
 
 interface NexusMapProps {
     nexusPosition: Position;
@@ -28,6 +29,7 @@ const NexusMap = ({ nexusPosition, nexusAddress }: NexusMapProps) => {
             <Marker position={nexusLatLngTuple}>
                 <Popup>{nexusAddress}</Popup>
             </Marker>
+            <ChangeView position={nexusLatLngTuple} zoom={13} />
         </MapContainer>
     );
 };
