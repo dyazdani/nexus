@@ -18,7 +18,7 @@ const NexusMap = ({ nexusPosition, nexusAddress }: NexusMapProps) => {
             zoom={13}
             scrollWheelZoom={false}
             style={{
-                height: '300px',
+                height: '400px',
                 width: '95dvw',
             }}
         >
