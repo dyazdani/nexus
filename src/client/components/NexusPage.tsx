@@ -9,9 +9,11 @@ interface Nexus {
     address: string;
 }
 
+type Coordinates = [string, string][];
+
 const NexusPage = () => {
     // Each coordinate in coordinates state stored as [LAT, LNG] for Turf.js to use.
-    const [coordinates, setCoordinates] = useState<string[][]>([
+    const [coordinates, setCoordinates] = useState<Coordinates>([
         ['', ''],
         ['', ''],
         ['', ''],
@@ -64,6 +66,11 @@ const NexusPage = () => {
         }
     };
 
+    const originPositions: Position[] = coordinates.map((el) => [
+        parseFloat(el[0]),
+        parseFloat(el[1]),
+    ]);
+
     return (
         <div>
             <h1>Set Your Coordinates</h1>
@@ -87,7 +94,9 @@ const NexusPage = () => {
                         value={coordinates[0][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[0][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -104,7 +113,9 @@ const NexusPage = () => {
                         value={coordinates[0][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[0][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -124,7 +135,9 @@ const NexusPage = () => {
                         value={coordinates[1][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[1][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -141,7 +154,9 @@ const NexusPage = () => {
                         value={coordinates[1][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[1][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -161,7 +176,9 @@ const NexusPage = () => {
                         value={coordinates[2][1] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[2][1] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -178,7 +195,9 @@ const NexusPage = () => {
                         value={coordinates[2][0] ?? 0}
                         onChange={(e) => {
                             e.preventDefault();
-                            const newCoordinates: string[][] = [...coordinates];
+                            const newCoordinates: Coordinates = [
+                                ...coordinates,
+                            ];
                             newCoordinates[2][0] = e.target.value;
                             setCoordinates(newCoordinates);
                         }}
@@ -189,6 +208,7 @@ const NexusPage = () => {
 
             {nexus ? (
                 <NexusMap
+                    originPositions={originPositions}
                     nexusPosition={nexus.position}
                     nexusAddress={nexus.address}
                 />
